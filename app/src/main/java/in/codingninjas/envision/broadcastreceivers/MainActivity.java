@@ -35,19 +35,34 @@ public class MainActivity extends AppCompatActivity {
         if(savedInstanceState != null){
             String name = savedInstanceState.getString("name");
         }
+//
+//        BroadcastReceiver receiver = new BroadcastReceiver() {
+//            @Override
+//            public void onReceive(Context context, Intent intent) {
+//                Toast.makeText(MainActivity.this,"Custom Broadcast",Toast.LENGTH_LONG).show();
+//            }
+//        };
+//        IntentFilter filter = new IntentFilter("custom_action");
+//
+//
+//        registerReceiver(receiver,filter);
 
+        Intent bIntent = new Intent("custom_action");
+        sendBroadcast(bIntent);
 
-        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-
-        Intent intent = new Intent(this,MyReceiver.class);
-        PendingIntent pendingIntent =  PendingIntent.getBroadcast(this,1,intent,0);
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(2018,8,2);
-
-
-        long currentTime = System.currentTimeMillis();
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,currentTime + 5000,10000,pendingIntent);
+//
+//        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+//
+//        Intent intent = new Intent(this,MyReceiver.class);
+//        PendingIntent pendingIntent =  PendingIntent.getBroadcast(this,1,intent,0);
+//
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.set(2018,8,2);
+//
+//
+//        long currentTime = System.currentTimeMillis();
+//        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,currentTime + 5000,10000,pendingIntent);
+//        alarmManager.cancel(pendingIntent);
 
 
 
@@ -66,62 +81,62 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+//
+//    @Override
+//    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+//        super.onRestoreInstanceState(savedInstanceState);
+//    }
 
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        Log.d("MainActivity","onStart");
+//        receiver = new BroadcastReceiver() {
+//            @Override
+//            public void onReceive(Context context, Intent intent) {
+//                Toast.makeText(MainActivity.this,"Dynamically Battery Low eventy",Toast.LENGTH_LONG).show();
+////                NotificationCompat.Builder builder = new NotificationCompat.Builder(MainActivity.this,"mychannel");
+////                builder.setSmallIcon(R.drawable.ic_launcher_foreground);
+////                builder.setContentTitle("Battery Okay");
+////                builder.setContentText("Battery is over 15%.");
+////                Notification notification = builder.build();
+////                manager.notify(1,notification);
+//            }
+//        };
+//
+//        IntentFilter intentFilter = new IntentFilter(Intent.ACTION_BATTERY_OKAY);
+//        registerReceiver(receiver,intentFilter);
+//    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d("MainActivity","onStart");
-        receiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                Toast.makeText(MainActivity.this,"Dynamically Battery Low eventy",Toast.LENGTH_LONG).show();
-//                NotificationCompat.Builder builder = new NotificationCompat.Builder(MainActivity.this,"mychannel");
-//                builder.setSmallIcon(R.drawable.ic_launcher_foreground);
-//                builder.setContentTitle("Battery Okay");
-//                builder.setContentText("Battery is over 15%.");
-//                Notification notification = builder.build();
-//                manager.notify(1,notification);
-            }
-        };
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        Log.d("MainActivity","onResume");
+//    }
+//
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        Log.d("MainActivity","onPause");
+//    }
+//
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        unregisterReceiver(receiver);
+//    }
+//
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//
+//    }
 
-        IntentFilter intentFilter = new IntentFilter(Intent.ACTION_BATTERY_OKAY);
-        registerReceiver(receiver,intentFilter);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d("MainActivity","onResume");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d("MainActivity","onPause");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        unregisterReceiver(receiver);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        outState.putString("name","abc");
-
-
-        super.onSaveInstanceState(outState, outPersistentState);
-    }
+//    @Override
+//    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+//        outState.putString("name","abc");
+//
+//
+//        super.onSaveInstanceState(outState, outPersistentState);
+//    }
 }
